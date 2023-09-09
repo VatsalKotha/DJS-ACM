@@ -21,10 +21,10 @@ class MyForm extends StatefulWidget {
 
 class _MyFormState extends State<MyForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController dobController = TextEditingController();
+  TextEditingController name = TextEditingController();
+  TextEditingController age = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController control_dob = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class _MyFormState extends State<MyForm> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextFormField(
-                controller: nameController,
+                controller: name,
                 decoration: const InputDecoration(labelText: 'Name'),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -50,7 +50,7 @@ class _MyFormState extends State<MyForm> {
                 },
               ),
               TextFormField(
-                controller: ageController,
+                controller: age,
                 decoration: const InputDecoration(labelText: 'Age'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -65,7 +65,7 @@ class _MyFormState extends State<MyForm> {
                 },
               ),
               TextFormField(
-                controller: phoneController,
+                controller: phone,
                 decoration: const InputDecoration(labelText: 'Phone Number'),
                 keyboardType: TextInputType.phone,
                 validator: (value) {
@@ -81,7 +81,7 @@ class _MyFormState extends State<MyForm> {
                 },
               ),
               TextFormField(
-                controller: dobController,
+                controller: control_dob,
                 decoration: const InputDecoration(labelText: 'Date of Birth'),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -95,13 +95,13 @@ class _MyFormState extends State<MyForm> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    String name = nameController.text;
-                    int age = int.parse(ageController.text);
-                    String phoneNumber = phoneController.text;
-                    String dob = dobController.text;
+                    String n = name.text;
+                    int age1 = int.parse(age.text);
+                    String phoneNumber = phone.text;
+                    String dob = control_dob.text;
 
-                    print('Name: $name');
-                    print('Age: $age');
+                    print('Name: $n');
+                    print('Age: $age1');
                     print('Phone Number: $phoneNumber');
                     print('Date of Birth: $dob');
                     print('Successful');
@@ -119,11 +119,22 @@ class _MyFormState extends State<MyForm> {
                     ScaffoldMessenger.of(context)
                       ..hideCurrentSnackBar()
                       ..showSnackBar(snackBar);
+                  } else {
+                    print("Please enter all details*");
+                    final snackBar = SnackBar(
+                      elevation: 0,
+                      behavior: SnackBarBehavior.floating,
+                      backgroundColor: Colors.transparent,
+                      content: AwesomeSnackbarContent(
+                        title: "Error!",
+                        message: "Please fill up all the details !",
+                        contentType: ContentType.failure,
+                      ),
+                    );
+                    ScaffoldMessenger.of(context)
+                      ..hideCurrentSnackBar()
+                      ..showSnackBar(snackBar);
                   }
-                  else
-                    {
-                      print("Please enter all details*");
-                    }
                 },
                 child: const Text('Submit'),
               ),
