@@ -81,16 +81,32 @@ class _MyFormState extends State<MyForm> {
                 },
               ),
               TextFormField(
-                controller: control_dob,
-                decoration: const InputDecoration(labelText: 'Date of Birth'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your date of birth';
-                  }
+                  controller: control_dob,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your date of birth';
+                    }
 
-                  return null;
-                },
-              ),
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Date of Birth",
+                    // prefixIcon: widget.prefixIcon,
+                    fillColor: Colors.grey[125],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
+                    ),
+                  )),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
