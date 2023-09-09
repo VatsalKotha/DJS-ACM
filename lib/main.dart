@@ -40,46 +40,101 @@ class _MyFormState extends State<MyForm> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextFormField(
-                controller: name,
-                decoration: const InputDecoration(labelText: 'Name'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your name';
-                  }
-                  return null;
-                },
-              ),
+                  controller: name,
+                  // decoration: const InputDecoration(labelText: 'Name'),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your name';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.people),
+                    hintText: "Name",
+                    fillColor: Colors.grey[125],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
+                    ),
+                  )),
+              const SizedBox(width: 20, height: 30),
               TextFormField(
-                controller: age,
-                decoration: const InputDecoration(labelText: 'Age'),
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your age';
-                  }
-                  int? age = int.tryParse(value!);
-                  if (age == null || age <= 0) {
-                    return 'Invalid age';
-                  }
-                  return null;
-                },
-              ),
+                  controller: age,
+                  // decoration: const InputDecoration(labelText: 'Age'),
+                  keyboardType: TextInputType.number,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your age';
+                    }
+                    int? age = int.tryParse(value!);
+                    if (age == null || age <= 0) {
+                      return 'Invalid age';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.date_range),
+                    hintText: "Age",
+                    fillColor: Colors.grey[125],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
+                    ),
+                  )),
+              const SizedBox(width: 20, height: 30),
               TextFormField(
-                controller: phone,
-                decoration: const InputDecoration(labelText: 'Phone Number'),
-                keyboardType: TextInputType.phone,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your phone number';
-                  }
-                  int? phoneNo = int.tryParse(value!);
-                  int len = phoneNo.toString().length;
-                  if (phoneNo == null || len > 10) {
-                    return 'Invalid Phone Number';
-                  }
-                  return null;
-                },
-              ),
+                  controller: phone,
+
+                  // decoration: const InputDecoration(labelText: 'Phone Number'),
+                  keyboardType: TextInputType.phone,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your phone number';
+                    }
+                    int? phoneNo = int.tryParse(value!);
+                    int len = phoneNo.toString().length;
+                    if (phoneNo == null || len > 10) {
+                      return 'Invalid Phone Number';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.phone_android_rounded),
+                    hintText: "Phone Number",
+                    fillColor: Colors.grey[125],
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(
+                        color: Colors.transparent,
+                        width: 0,
+                      ),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          const BorderSide(color: Colors.blue, width: 2),
+                    ),
+                  )),
+              const SizedBox(width: 20, height: 30),
               TextFormField(
                   controller: control_dob,
                   validator: (value) {
@@ -90,8 +145,8 @@ class _MyFormState extends State<MyForm> {
                     return null;
                   },
                   decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.date_range),
                     hintText: "Date of Birth",
-                    // prefixIcon: widget.prefixIcon,
                     fillColor: Colors.grey[125],
                     filled: true,
                     enabledBorder: OutlineInputBorder(
